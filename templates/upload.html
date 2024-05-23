@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Upload CSV</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            height: 80%;
+            margin-top: 100px;
+        }
+        h1 {
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            color: #495057;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+        .convert-button {
+            margin-top: 4px;
+            background-color: #007bff;
+            border-color: #007bff;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Upload CSV File</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Choose CSV File</label>
+                <input type="file" class="form-control-file" id="file" name="file" accept=".csv">
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+        <div class="alert alert-info" role="alert">
+            If you don't have a CSV file, please convert your data to a CSV file format before uploading.
+            <a href="https://convertio.co/xls-csv/" target="_blank" class="btn btn-secondary convert-button">Convert to CSV</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
