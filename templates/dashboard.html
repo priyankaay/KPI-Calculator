@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 20px;
+        }
+        .row-logo {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        .logo {
+            margin-right: 20px;
+        }
+        .logo img {
+            width: 60px;
+            height: auto;
+        }
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+        .buttons button {
+            flex: 1 1 auto;
+            margin: 5px;
+            padding: 10px;
+            min-width: 100px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .table-section {
+            margin-top: 30px;
+        }
+        .table-section h3 {
+            margin-bottom: 15px;
+        }
+        .table-responsive {
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row-logo">
+            <div class="logo">
+                <img src="static/logo.png" alt="kpmg_logo" style="width:55px;height: 50px;">
+            </div>
+            <div class="buttons">
+                <button onclick="calculateSum()">Sum</button>
+                <button>Circle</button>
+                <button>Vendor</button>
+                <button>Invoice Number</button>
+                <button>Date</button>
+                <button>Item</button>
+                <button>Category</button>
+                <button>Sub Category</button>
+                <button>Aging</button>
+            </div>
+        </div>
+      
+        <div class="table-section">
+            <div>
+                <h3>Invoice</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Invoice Created with/without PO</td></tr>
+                            <tr><td>Invoice rate anomaly</td></tr>
+                            <tr><td>Invoice creation to validation TAT</td></tr>
+                            <tr><td>Duplicate Invoice</td></tr>
+                            <tr><td>Invoice amount more than PO amount</td></tr>
+                            <tr><td>Split Invoice</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <h3>Payment</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Vendor payment on time</td></tr>
+                            <tr><td>Payment without approved notice</td></tr>
+                            <tr><td>Payment Accuracy</td></tr>
+                            <tr><td>Payment without PO</td></tr>
+                            <tr><td>Delayed/Early payment</td></tr>
+                            <tr><td>Overdue Aging</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <h3>Inventory</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Aging of current on hand stock for different stock of CWIP</td></tr>
+                            <tr><td>Stock out (%)</td></tr>
+                            <tr><td>Zero Stock out situations</td></tr>
+                            <tr><td>Inventory Ageing (Value) lying not utilized</td></tr>
+                            <tr><td>Slow moving - Inventory Quantity/Value</td></tr>
+                            <tr><td>Fill Rate</td></tr>
+                            <tr><td>Potential write off quantity</td></tr>
+                            <tr><td>Critical material availability</td></tr>
+                            <tr><td>Frequency of Material across sites</td></tr>
+                            <tr><td>Consumption Trend Analysis</td></tr>
+                            <tr><td>Stock Availability <button onclick="redirectToStockAvailability()">Check</button></td></tr>
+                            <tr><td>Inventory Days Vs Benchmarks</td></tr>
+                            <tr><td>Stock Storage %</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateSum() {
+            const column = prompt("Enter the column name to sum:");
+            if (column) {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = `/sum/{{ filename }}`;
+
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'column';
+                input.value = column;
+
+                form.appendChild(input);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+
+        function redirectToStockAvailability() {
+            window.location.href = '/stock_availability';
+        }
+    </script>
+</body>
+</html>
+
