@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Stock Availability</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 20px;
+        }
+        .table-responsive {
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Stock Availability</h3>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Circle</th>
+                        <th>Item Count</th>
+                    </tr>
+                </thead>
+                <tbody id="stock-availability-body">
+                    <!-- Data will be populated here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = [
+                { circle: 'BAL-TNG-NLD--Bihar', itemCount: 831 },
+                { circle: 'BAL-TNG-NLD--AP', itemCount: 1138 },
+                { circle: 'BAL-TNG-NLD--Arunachal Pradesh', itemCount: 32 },
+                { circle: 'BAL-TNG-NLD--Assam', itemCount: 224 },
+                { circle: 'BAL-TNG-NLD--CHANDIGARH', itemCount: 10 },
+                { circle: 'BAL-TNG-NLD--Chhattisgarh', itemCount: 250 },
+                { circle: 'BAL-TNG-NLD--Delhi', itemCount: 173 },
+                { circle: 'BAL-TNG-NLD--GOA', itemCount: 26 },
+                { circle: 'BAL-TNG-NLD--Gujarat', itemCount: 1257 },
+                { circle: 'BAL-TNG-NLD--HP', itemCount: 504 },
+                { circle: 'BAL-TNG-NLD--J&K', itemCount: 218 },
+                { circle: 'BAL-TNG-NLD--Jharkhand', itemCount: 299 },
+                { circle: 'BAL-TNG-NLD--KARNATAKA', itemCount: 1817 },
+                { circle: 'BAL-TNG-NLD--KERALA', itemCount: 94 },
+                { circle: 'BAL-TNG-NLD--Madhya Pradesh', itemCount: 954 },
+                { circle: 'BAL-TNG-NLD--Maharashtra', itemCount: 1449 },
+                { circle: 'BAL-TNG-NLD--Manipur', itemCount: 16 },
+                { circle: 'BAL-TNG-NLD--Meghalaya', itemCount: 14 },
+                { circle: 'BAL-TNG-NLD--Mizoram', itemCount: 3 },
+                { circle: 'BAL-TNG-NLD--Nagaland', itemCount: 1 },
+                { circle: 'BAL-TNG-NLD--Orissa', itemCount: 1326 },
+                { circle: 'BAL-TNG-NLD--PONDICHERRY', itemCount: 7 },
+                { circle: 'BAL-TNG-NLD--Punjab', itemCount: 325 },
+                { circle: 'BAL-TNG-NLD--Rajasthan', itemCount: 695 },
+                { circle: 'BAL-TNG-NLD--SIKKIM', itemCount: 20 },
+                { circle: 'BAL-TNG-NLD--Tamil Nadu', itemCount: 1006 },
+                { circle: 'BAL-TNG-NLD--Telangana', itemCount: 20 },
+                { circle: 'BAL-TNG-NLD--Tripura', itemCount: 2654 },
+                { circle: 'BAL-TNG-NLD--UP', itemCount: 399 },
+                { circle: 'BAL-TNG-NLD--UTTRANCHAL', itemCount: 818 },
+                { circle: 'BAL-TNG-NLD--WB', itemCount: 451 },
+            ];
+
+            const tbody = document.getElementById('stock-availability-body');
+            tbody.innerHTML = ''; // Clear previous data
+
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                const circleCell = document.createElement('td');
+                const itemCountCell = document.createElement('td');
+
+                circleCell.textContent = item.circle;
+                itemCountCell.textContent = item.itemCount;
+
+                row.appendChild(circleCell);
+                row.appendChild(itemCountCell);
+
+                tbody.appendChild(row);
+            });
+        });
+    </script>
+</body>
+</html>
+
