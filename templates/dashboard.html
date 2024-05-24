@@ -37,6 +37,12 @@
             min-width: 100px;
             font-size: 16px;
             cursor: pointer;
+            background-color: white; 
+            border: 1px solid #ddd;  
+        }
+        .buttons button.active {
+            background-color: blue;
+            color: white;
         }
         .table-section {
             margin-top: 30px;
@@ -71,15 +77,14 @@
                 <img src="static/logo.png" alt="kpmg_logo" style="width:55px;height: 50px;">
             </div>
             <div class="buttons">
-                <button onclick="calculateSum()">Sum</button>
-                <button>Circle</button>
-                <button>Vendor</button>
-                <button>Invoice Number</button>
-                <button>Date</button>
-                <button>Item</button>
-                <button>Category</button>
-                <button>Sub Category</button>
-                <button>Aging</button>
+                <button onclick="toggleActive(this)">Circle</button>
+                <button onclick="toggleActive(this)">Vendor</button>
+                <button onclick="toggleActive(this)">Invoice Number</button>
+                <button onclick="toggleActive(this)">Date</button>
+                <button onclick="toggleActive(this)">Item</button>
+                <button onclick="toggleActive(this)">Category</button>
+                <button onclick="toggleActive(this)">Sub Category</button>
+                <button onclick="toggleActive(this)">Aging</button>
             </div>
         </div>
       
@@ -144,7 +149,9 @@
                             <tr><td>Critical material availability</td></tr>
                             <tr><td>Frequency of Material across sites</td></tr>
                             <tr><td>Consumption Trend Analysis</td></tr>
-                            <tr><td>Stock Availability <button onclick="redirectToStockAvailability()">Check</button></td></tr>
+                            <tr>
+                                <td>Stock Availability <button id="stockAvailabilityButton" onclick="redirectToStockAvailability()">Check</button></td>
+                            </tr>
                             <tr><td>Inventory Days Vs Benchmarks</td></tr>
                             <tr><td>Stock Storage %</td></tr>
                         </tbody>
@@ -172,8 +179,14 @@
                 form.submit();
             }
         }
+        
+        function toggleActive(button) {
+            button.classList.toggle('active');
+        }
 
         function redirectToStockAvailability() {
+            const button = document.getElementById('stockAvailabilityButton');
+            button.style.backgroundColor = 'blue';
             window.location.href = '/stock_availability';
         }
     </script>
